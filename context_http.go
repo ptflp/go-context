@@ -16,8 +16,11 @@ func main() {
 		case <-time.After(2 * time.Second):
 			writer.Write([]byte("request processed"))
 			fmt.Println("request end")
+			return
 		case <-ctx.Done():
 			fmt.Println("request canceled")
+			return
 		}
+		return
 	}))
 }
